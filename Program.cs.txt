@@ -1,3 +1,50 @@
 Program.cs
-Class Program {
+using System;
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Your club needs members!");
+        Console.WriteLine("Decide who gets in and who doesn't, it won't be easy! you can only have 4 other members!");
+
+        string[] candidates = new string[] { "Leonardo", "test", "test", "test" };
+        string[] clubMembers = new string[4];
+
+        int guestIndex = 0;
+
+        foreach (var candidate in candidates)
+        {
+            Console.WriteLine($"Do you want to add {candidate} to your club? (yes/no)");
+            string input = Console.ReadLine().ToLower();
+            if (input == "yes")
+            {
+                clubMembers[guestIndex] = candidate;
+                guestIndex++;
+                if (candidate == "Leonardo")
+                {
+                    Console.WriteLine("Leo's brothers want in too! Add Raphael, Michaelangelo, and Donatello? (yes/no)");
+                    if (input == "yes")
+                    {
+                        guestIndex = 4;
+                        Console.WriteLine("COWABUNGA! your club is filled! Pizza everyday!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("COWABUMMER! at least Leonardo is in your club!");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"{candidate} has been denied entry.");
+                }
+            }
+        }
+        Console.WriteLine("The following guests are in your club");
+        foreach (var member in clubMembers)
+        {
+            Console.WriteLine(member);
+        }
+        Console.WriteLine("\nPress any key to exit...");
+        Console.ReadKey();
+    }
 }
